@@ -17,12 +17,14 @@ customNum.forEach(num => {
     arrUp.addEventListener('click', () => {
         numInput.stepUp()
         checkMaxMin()
+        tg.MainButton.show()
     })
 
     // click event for the down arrow
     arrDown.addEventListener('click', () => {
         numInput.stepDown()
         checkMaxMin()
+        tg.MainButton.show()
     })
 
     // add input event for input element
