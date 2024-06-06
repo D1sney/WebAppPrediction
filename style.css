@@ -1,0 +1,92 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.cdnfonts.com/css/thyssenkrupp-dongyang-korean');
+@import url('https://fonts.cdnfonts.com/css/advanced-dot-digital-7');
+
+body {
+    background: var(--tg-theme-bg-color);
+    /* background: #1b1c23; */
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Thyssenkrupp Dongyang Korean', sans-serif;
+    color: #21d99b;
+    flex-direction: column;
+}
+
+.match-title {
+    color: var(--tg-theme-text-color);
+    padding-left: 2rem;
+    font-size: 2rem;
+    font-family: 'Advanced Dot Digital-7', sans-serif;
+}
+
+.match-score {
+    padding-top: 3rem;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.match-score i {
+    font-size: 2rem;
+}
+
+#first-team {
+    margin-right: 1rem;
+}
+
+#colon {
+    font-family: 'Thyssenkrupp Dongyang Korean', sans-serif;
+    font-size: 3rem;
+}
+
+#second-team {
+    margin-left: 1rem;
+}
+
+input {
+    /* font-family: 'Thyssenkrupp Dongyang Korean', sans-serif; */
+    font-family: 'Advanced Dot Digital-7', sans-serif;
+}
+
+.custom-num {
+    display: flex;
+    width: 3rem;
+    height: 7rem;
+    /* border: 3px #21d99b solid;
+    border-radius: 5rem; */
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.3;
+    margin-bottom: 1.5rem;
+}
+
+/* удаляем дефолтные стрелки из инпута */
+
+.num-input::-webkit-outer-spin-button,
+.num-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.num-input {
+    font-size: 2rem;
+    padding-left: 0.32rem;
+    text-align: center;
+    background: none;
+    border: none;
+    font-weight: bold;
+    width: 100%;
+}
+
+.num-input:focus {
+    outline: none;
+}
+
+.custom-num i {
+    font-size: 2em;
+    cursor: pointer;
+}
