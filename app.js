@@ -72,9 +72,9 @@ tg.expand()
 
 // стили для MainButton
 tg.MainButton.textColor = '#1b1c23'
-tg.MainButton.color = '#21d99b'
-
-let score = ''
+tg.MainButton.color = '#6600ff'
+tg.MainButton.setText("Подтвердить прогноз");
+tg.MainButton.show();
 
 // Фиксированное название события нажатия на главную кнопку в телеграмме
 Telegram.WebApp.onEvent('mainButtonClicked', function() {
@@ -85,5 +85,5 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
     for (let i = 0; i < customNum.length; i++) {
         scoreData[i] = customNum[i].querySelector('.num-input').value
     }
-    tg.sendData(scoreData);
+    tg.sendData(JSON.stringify(scoreData));
 })
