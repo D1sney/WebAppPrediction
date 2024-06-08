@@ -1,5 +1,5 @@
 // Select all custom number elements on the page
-const customNum = document.querySelectorAll('.text-field')
+// const customNum = document.querySelectorAll('.text-field')
 
 
 // --------- TG WEB APP --------- 
