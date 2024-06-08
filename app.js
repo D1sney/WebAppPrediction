@@ -71,7 +71,7 @@ let tg = window.Telegram.WebApp;
 tg.expand()
 
 // стили для MainButton
-tg.MainButton.textColor = '#1b1c23'
+tg.MainButton.textColor = '#21d99b'
 tg.MainButton.color = '#6600ff'
 tg.MainButton.setText("Подтвердить прогноз");
 tg.MainButton.show();

@@ -1,0 +1,97 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.cdnfonts.com/css/thyssenkrupp-dongyang-korean');
+@import url('https://fonts.cdnfonts.com/css/advanced-dot-digital-7');
+
+html {
+    box-sizing: border-box;
+}
+
+input {
+    background: #000000;
+    color: #21d99b;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    background: #000000;
+    margin: 0.5em;
+    min-height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-family: 'Thyssenkrupp Dongyang Korean', sans-serif;
+    color: #21d99b;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Advanced Dot Digital-7', sans-serif;
+    margin-bottom: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.text-field {
+    width: 350px;
+    position: relative;
+    margin-bottom: 4em;
+}
+
+.text-field__inp {
+    font-family: 'Advanced Dot Digital-7', sans-serif;
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    appearance: none;
+    font-size: 18px;
+    border-bottom: 1px solid #21d99b;
+    transition: border-color .3s;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    /* filter: invert(1); */
+    background-color: #6600ff;
+}
+
+.text-field__inp:focus {
+    border-color: #6600ff;
+}
+
+.text-field__placeholder {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #21d99b;
+    font-size: 18px;
+    pointer-events: none;
+    transform-origin: left;
+    transition: top .3s, transform .3s, color .3s;
+}
+
+.text-field__inp:focus+.text-field__placeholder,
+.text-field__inp:not(:focus):valid+.text-field__placeholder {
+    top: -15px;
+    transform: scale(.85);
+    color: #6600ff;
+}

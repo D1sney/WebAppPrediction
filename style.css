@@ -16,7 +16,6 @@ body {
 }
 
 .match-title {
-    color: var(--tg-theme-text-color);
     padding-left: 2rem;
     font-size: 2rem;
     font-family: 'Advanced Dot Digital-7', sans-serif;
