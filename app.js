@@ -8,7 +8,7 @@ let tg = window.Telegram.WebApp;
 tg.expand()
 
 // стили для MainButton
-tg.MainButton.textColor = '#21d99b'
+tg.MainButton.textColor = '#ffffff'
 tg.MainButton.color = '#6600ff'
 tg.MainButton.setText("Создать матч");
 tg.MainButton.show();
@@ -17,8 +17,8 @@ tg.MainButton.show();
 Telegram.WebApp.onEvent('mainButtonClicked', function() {
     const matchData = {}
     
-    for (let i = 0; i < customNum.length; i++) {
-        matchData[i] = customNum[i].querySelector('.text-field__inp').value
-    }
-    tg.sendData(JSON.stringify(scoreData));
+    matchData[firstTeam] = document.getElementById('first-team').value
+    matchData[secondTeam] = document.getElementById('second-team').value
+    matchData[tourDate] = document.getElementById('tour-date').value
+    tg.sendData(JSON.stringify(matchData));
 })
