@@ -19,6 +19,6 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
     
     matchData[firstTeam] = document.getElementById('first-team').value
     matchData[secondTeam] = document.getElementById('second-team').value
-    matchData[tourDate] = document.getElementById('tour-date').value
+    // matchData[tourDate] = document.getElementById('tour-date').value
     tg.sendData(JSON.stringify(matchData));
 })
