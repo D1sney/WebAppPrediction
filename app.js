@@ -3,6 +3,8 @@
 
 
 // --------- TG WEB APP --------- 
+Telegram.WebApp.ready();
+
 let tg = window.Telegram.WebApp;
 
 tg.expand()
@@ -14,7 +16,7 @@ tg.MainButton.setText("Создать матч");
 tg.MainButton.show();
 
 // Фиксированное название события нажатия на главную кнопку в телеграмме
-Telegram.WebApp.onEvent('mainButtonClicked', function() {
+tg.onEvent('mainButtonClicked', function() {
     const matchData = {}
     
     matchData['firstTeam'] = document.getElementById('first-team').value
