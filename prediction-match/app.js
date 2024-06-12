@@ -97,7 +97,14 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
 
 // Получаем из Telegram название команд и передаем в HTML
 const urlParams = new URLSearchParams(window.location.search);
+// Получаем тэги HTML
 let firstTeam = document.getElementById('tg-first-team')
 let secondTeam = document.getElementById('tg-second-team')
+let firstAbb = document.getElementById('first-team')
+let secondAbb = document.getElementById('second-team')
+
+// Записываем в них новую информацию из Telegram
 firstTeam.textContent = urlParams.get('first_team');
 secondTeam.textContent = urlParams.get('second_team');
+firstAbb.textContent = urlParams.get('first_team').toUpperCase().slice(0,3);
+secondAbb.textContent = urlParams.get('second_team').toUpperCase().slice(0,3);
