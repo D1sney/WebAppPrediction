@@ -77,10 +77,10 @@ tg.MainButton.setText("Подтвердить прогноз");
 tg.MainButton.show();
 
 // Установка названия команд
-let firstTeam = document.getElementById('tg-first-team')
-let secondTeam = document.getElementById('tg-second-team')
-firstTeam.textContent = `${tg.initDataUnsafe.first_team}`
-secondTeam.textContent = `${tg.initDataUnsafe.second_team}`
+// let firstTeam = document.getElementById('tg-first-team')
+// let secondTeam = document.getElementById('tg-second-team')
+// firstTeam.textContent = `${tg.initDataUnsafe.first_team}`
+// secondTeam.textContent = `${tg.initDataUnsafe.second_team}`
 // `${tg.initDataUnsafe.user.first_name}`
 
 // Фиксированное название события нажатия на главную кнопку в телеграмме
@@ -94,3 +94,10 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
     }
     tg.sendData(JSON.stringify(scoreData));
 })
+
+// Получаем из Telegram название команд и передаем в HTML
+const urlParams = new URLSearchParams(window.location.search);
+let firstTeam = document.getElementById('tg-first-team')
+let secondTeam = document.getElementById('tg-second-team')
+firstTeam.textContent = urlParams.get('first_team');
+secondTeam.textContent = urlParams.get('second_team');
