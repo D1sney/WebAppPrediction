@@ -1,11 +1,63 @@
-// Select all custom number elements on the page
+const main = document.getElementById('main')
+// '[England-Germany,Italy-Spain,France-Belgium]'
+const urlParams = new URLSearchParams(window.location.search);
+
+
+// По ключу matches из строки делаес список матчей
+function getListMatches() {
+    const matchesParam = urlParams.get('matches');
+    // const matchesParam = '[England-Germany,Italy-Spain,France-Belgium]'
+    matches = matchesParam.slice(1, -1).split(',');
+    return matches
+}
+
+// Из списка матчей делаем словарь с данными о первой команде, второй команде, аббравиатуре первой и второй команде
+function generate_matches(list_matches) {
+    let matches_data = []
+    for (let i = 0; i < list_matches.length; i++) {
+        matches_data[i] = {}
+        matches_data[i]['firstTeam'] = list_matches[i].split('-')[0].trim();
+        matches_data[i]['secondTeam'] = list_matches[i].split('-')[1].trim();
+        matches_data[i]['firstAbb'] = list_matches[i].split('-')[0].trim().toUpperCase().slice(0,3);
+        matches_data[i]['secondAbb'] = list_matches[i].split('-')[1].trim().toUpperCase().slice(0,3);
+    }
+    return matches_data
+}
+
+// Рэндерим все матчи с нужными id
+function render(values) {
+    for (let i = 0; i < values.length; i++) {
+        main.insertAdjacentHTML('beforeend', `<div id="match-${i}">
+            <div class="match-title">
+            <i id="tg-first-team">${values[i]['firstTeam']}</i>
+            <i id="tg-second-team">${values[i]['secondTeam']}</i>
+        </div>
+
+        <div class="match-score">
+            <i id="first-team">${values[i]['firstAbb']}</i>
+            <div class="custom-num">
+                <i class="ri-arrow-up-wide-line arr-up"></i>
+                <input type="number" class="num-input" min="0" max="20" value="0" data-color="#6600ff">
+                <i class="ri-arrow-down-wide-line arr-down"></i>
+            </div>
+            <i id="colon">:</i>
+            <div class="custom-num">
+                <i class="ri-arrow-up-wide-line arr-up"></i>
+                <input type="number" class="num-input" min="0" max="20" value="0" data-color="#6600ff">
+                <i class="ri-arrow-down-wide-line arr-down"></i>
+            </div>
+            <i id="second-team">${values[i]['secondAbb']}</i>
+        </div>
+        </div>`)}}
+
+function mainRender() {
+    render(generate_matches(getListMatches()))
+}
+mainRender()
+
+
+// Делаем функционал для num input
 const customNum = document.querySelectorAll('.custom-num')
-// for testing
-// const scoreData = {}
-// for (let i = 0; i < customNum.length; i++) {
-//     scoreData[i] = customNum[i].querySelector('.num-input').value
-// }
-// console.log(scoreData)
 
 customNum.forEach(num => {
     const numInput = num.querySelector('.num-input')
@@ -65,6 +117,7 @@ customNum.forEach(num => {
     }
 })
 
+
 // --------- TG WEB APP --------- 
 let tg = window.Telegram.WebApp;
 
@@ -76,35 +129,16 @@ tg.MainButton.color = '#6600ff'
 tg.MainButton.setText("Подтвердить прогноз");
 tg.MainButton.show();
 
-// Установка названия команд
-// let firstTeam = document.getElementById('tg-first-team')
-// let secondTeam = document.getElementById('tg-second-team')
-// firstTeam.textContent = `${tg.initDataUnsafe.first_team}`
-// secondTeam.textContent = `${tg.initDataUnsafe.second_team}`
-// `${tg.initDataUnsafe.user.first_name}`
-
 // Фиксированное название события нажатия на главную кнопку в телеграмме
 Telegram.WebApp.onEvent('mainButtonClicked', function() {
-    const scoreData = {}
-    // customNum.forEach(num => {
-    //     const numInput = num.querySelector('.num-input')        
-    // })
-    for (let i = 0; i < customNum.length; i++) {
-        scoreData[i] = customNum[i].querySelector('.num-input').value
+    
+    matches = getListMatches()
+    const scoreData = generate_matches(matches)
+    for (let i = 0; i < matches.length; i++) {
+        const match = document.getElementById(`match-${i}`)
+        numInputs = match.querySelectorAll('.num-input')
+        scoreData[i]['firstScore'] = numInputs[0].value;
+        scoreData[i]['secondScore'] = numInputs[1].value;
     }
     tg.sendData(JSON.stringify(scoreData));
 })
-
-// Получаем из Telegram название команд и передаем в HTML
-const urlParams = new URLSearchParams(window.location.search);
-// Получаем тэги HTML
-let firstTeam = document.getElementById('tg-first-team')
-let secondTeam = document.getElementById('tg-second-team')
-let firstAbb = document.getElementById('first-team')
-let secondAbb = document.getElementById('second-team')
-
-// Записываем в них новую информацию из Telegram
-firstTeam.textContent = urlParams.get('first_team');
-secondTeam.textContent = urlParams.get('second_team');
-firstAbb.textContent = urlParams.get('first_team').toUpperCase().slice(0,3);
-secondAbb.textContent = urlParams.get('second_team').toUpperCase().slice(0,3);

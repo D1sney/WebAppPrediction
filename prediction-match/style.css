@@ -8,7 +8,7 @@ body {
     margin: 0.5em;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     font-family: 'Thyssenkrupp Dongyang Korean', sans-serif;
     color: #21d99b;
