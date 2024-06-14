@@ -131,7 +131,7 @@ tg.MainButton.show();
 
 // Фиксированное название события нажатия на главную кнопку в телеграмме
 Telegram.WebApp.onEvent('mainButtonClicked', function() {
-    
+    const button = urlParams.get('button');
     matches = getListMatches()
     const scoreData = generate_matches(matches)
     for (let i = 0; i < matches.length; i++) {
@@ -140,5 +140,6 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
         scoreData[i]['firstScore'] = numInputs[0].value;
         scoreData[i]['secondScore'] = numInputs[1].value;
     }
+    scoreData.push(action);
     tg.sendData(JSON.stringify(scoreData));
 })
