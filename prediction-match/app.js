@@ -140,6 +140,6 @@ Telegram.WebApp.onEvent('mainButtonClicked', function() {
         scoreData[i]['firstScore'] = numInputs[0].value;
         scoreData[i]['secondScore'] = numInputs[1].value;
     }
-    scoreData.push(action);
+    scoreData.push(button);
     tg.sendData(JSON.stringify(scoreData));
 })
