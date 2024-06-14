@@ -7,7 +7,6 @@ Telegram.WebApp.ready();
 
 let tg = window.Telegram.WebApp;
 
-tg.expand()
 
 // стили для MainButton
 tg.MainButton.textColor = '#ffffff'
