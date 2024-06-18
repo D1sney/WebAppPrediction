@@ -6,7 +6,7 @@ const urlParams = new URLSearchParams(window.location.search);
 // По ключу matches из строки делаес список матчей
 function getListMatches() {
     const matchesParam = urlParams.get('matches');
-    // const matchesParam = '[England-Germany,Italy-Spain,France-Belgium]'
+    // const matchesParam = '[Англия-Германия,Италия-Испания,Франция-Бельгия]'
     matches = matchesParam.slice(1, -1).split(',');
     return matches
 }

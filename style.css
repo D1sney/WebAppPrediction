@@ -1,6 +1,8 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url('https://fonts.cdnfonts.com/css/thyssenkrupp-dongyang-korean');
 @import url('https://fonts.cdnfonts.com/css/advanced-dot-digital-7');
+/* Press Start 2P (Напоминает стиль футбольного табло) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet');
 
 html {
     box-sizing: border-box;
@@ -56,7 +58,7 @@ h1 {
 }
 
 .text-field__inp {
-    font-family: 'Thyssenkrupp Dongyang Korean', sans-serif;
+    font-family: 'Press Start 2P', cursive;
     width: 100%;
     padding: 10px 0;
     border: 0;
